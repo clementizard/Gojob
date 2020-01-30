@@ -2,6 +2,7 @@ const test = require('ava');
 const casual = require('casual');
 
 const closestToZero = require('./closestToZero.js');
+const closestToZeroGolfed = require('./closestToZeroGolfed');
 
 test('Statement', t => {
 	let result = closestToZero([8, 5, 10]);
@@ -48,4 +49,14 @@ test('Performance', t => {
 	result = closestToZero(arrayDouble);
 	console.timeEnd('closestToZero with 10000 doubles');
 	t.is(result, Number.MIN_VALUE, 'closestToZero with 10000 doubles');
+
+	console.time('closestToZeroGolfed with 10000 integers');
+	result = closestToZeroGolfed(array);
+	console.timeEnd('closestToZeroGolfed with 10000 integers');
+	t.is(result, 1, 'closestToZeroGolfed with 10000 integers');
+
+	console.time('closestToZeroGolfed with 10000 doubles');
+	result = closestToZeroGolfed(arrayDouble);
+	console.timeEnd('closestToZeroGolfed with 10000 doubles');
+	t.is(result, Number.MIN_VALUE, 'closestToZeroGolfed with 10000 doubles');
 });
