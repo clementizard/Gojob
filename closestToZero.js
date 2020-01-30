@@ -13,7 +13,7 @@ const closestToZero = (arr) => {
 			if (accAbs === currAbs) return (acc > 0 ? acc : curr);
 			// If they are not equal, send the lowest absolute signed
 			return (accAbs < currAbs ? acc : curr);
-		}
+		} else if (curr === 0 || acc === 0) return 0; // Zero is a valid number
 		// If accumulator is null/undefined/equal to zero, send current
 		return (!acc ? curr : acc);
 	});

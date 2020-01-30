@@ -2,7 +2,6 @@ const test = require('ava');
 const casual = require('casual');
 
 const closestToZero = require('./closestToZero.js');
-const closestToZeroGolfed = require('./closestToZeroGolfed');
 
 test('Statement', t => {
 	let result = closestToZero([8, 5, 10]);
@@ -27,7 +26,7 @@ test('Floats', t => {
 
 test('Zeros, empty arrays and no params', t => {
 	let result = closestToZero([0, 0, 2, 3, 0]);
-	t.is(result, 2, '[0, 0, 2, 3, 0]');
+	t.is(result, 0, '[0, 0, 2, 3, 0]');
 	result = closestToZero([]);
 	t.is(result, 0, '[]');
 	result = closestToZero();
@@ -37,26 +36,16 @@ test('Zeros, empty arrays and no params', t => {
 test('Performance', t => {
 	const casualArray = casual.array_of_integers(9999);
 	const casualArrayDouble = casual.array_of_doubles(9999);
-	const array = [...casualArray, 1];
-	const arrayDouble = [...casualArrayDouble, Number.MIN_VALUE]; // 5e-324
+	const array = [...casualArray, 0];
+	const arrayDouble = [...casualArrayDouble, 0]; // 5e-324
 
 	console.time('closestToZero with 10000 integers');
 	let result = closestToZero(array);
 	console.timeEnd('closestToZero with 10000 integers');
-	t.is(result, 1, 'closestToZero with 10000 integers');
+	t.is(result, 0, 'closestToZero with 10000 integers');
 
 	console.time('closestToZero with 10000 doubles');
 	result = closestToZero(arrayDouble);
 	console.timeEnd('closestToZero with 10000 doubles');
-	t.is(result, Number.MIN_VALUE, 'closestToZero with 10000 doubles');
-
-	console.time('closestToZeroGolfed with 10000 integers');
-	result = closestToZeroGolfed(array);
-	console.timeEnd('closestToZeroGolfed with 10000 integers');
-	t.is(result, 1, 'closestToZeroGolfed with 10000 integers');
-
-	console.time('closestToZeroGolfed with 10000 doubles');
-	result = closestToZeroGolfed(arrayDouble);
-	console.timeEnd('closestToZeroGolfed with 10000 doubles');
-	t.is(result, Number.MIN_VALUE, 'closestToZeroGolfed with 10000 doubles');
+	t.is(result, 0, 'closestToZero with 10000 doubles');
 });
