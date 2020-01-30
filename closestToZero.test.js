@@ -34,18 +34,18 @@ test('Zeros, empty arrays and no params', t => {
 });
 
 test('Performance', t => {
-	const casualArray = casual.array_of_integers(999);
-	const casualArrayDouble = casual.array_of_doubles(999);
+	const casualArray = casual.array_of_integers(9999);
+	const casualArrayDouble = casual.array_of_doubles(9999);
 	const array = [...casualArray, 1];
 	const arrayDouble = [...casualArrayDouble, Number.MIN_VALUE]; // 5e-324
 
-	console.time('closestToZero with 1000 integers');
+	console.time('closestToZero with 10000 integers');
 	let result = closestToZero(array);
-	console.timeEnd('closestToZero with 1000 integers');
-	t.is(result, 1, 'closestToZero with 1000 integers');
+	console.timeEnd('closestToZero with 10000 integers');
+	t.is(result, 1, 'closestToZero with 10000 integers');
 
-	console.time('closestToZero with 1000 doubles');
+	console.time('closestToZero with 10000 doubles');
 	result = closestToZero(arrayDouble);
-	console.timeEnd('closestToZero with 1000 doubles');
-	t.is(result, Number.MIN_VALUE, 'closestToZero with 1000 doubles');
+	console.timeEnd('closestToZero with 10000 doubles');
+	t.is(result, Number.MIN_VALUE, 'closestToZero with 10000 doubles');
 });

@@ -17,6 +17,3 @@ Examples:
 
 ### Coverage
 After running tests, open ```/coverage/lcov-report/index.html``` in your favorite browser
-
-### Known limitations
-- Maximum array length: 7300 (~850ms)
