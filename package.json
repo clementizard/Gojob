@@ -1,0 +1,21 @@
+{
+	"scripts": {
+		"test": "nyc ava --verbose"
+	},
+	"ava": {
+		"files": [
+			"**/*.test.js"
+		]
+	},
+	"nyc": {
+		"reporter": [
+			"lcov",
+			"text"
+		]
+	},
+	"devDependencies": {
+		"ava": "^3.1.0",
+		"casual": "^1.6.2",
+		"nyc": "^15.0.0"
+	}
+}
